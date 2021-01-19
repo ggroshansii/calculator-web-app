@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div id="main-container">
+      <div class="display"></div>
+      <div class="buttons">
+        <div class="grid-container"></div>
+      </div>
+    </div>
+
     <script>
-        function add(a,b){
-            return a + b;
-        }
+      function add(a, b) {
+        return a + b;
+      }
 
-        function subtract(a,b){
-            return a - b;
-        }
+      function subtract(a, b) {
+        return a - b;
+      }
 
-        function multiply(a,b){
-            return a * b;
-        }
+      function multiply(a, b) {
+        return a * b;
+      }
 
-        function divide(a,b){
-            return a / b;
-        }
+      function divide(a, b) {
+        return a / b;
+      }
 
-        function operate(operator, a, b){
-            if (operator == "+"){
-                return add(a,b);
-            }
-            else if (operator == "-"){
-                return subtract(a,b);
-            }
-            else if (operator == "*"){
-                return multiply(a,b);
-            }
-            else if (operator == "/"){
-                return divide(a, b);
-            }
+      function operate(operator, a, b) {
+        if (operator == "+") {
+          return add(a, b);
+        } else if (operator == "-") {
+          return subtract(a, b);
+        } else if (operator == "*") {
+          return multiply(a, b);
+        } else if (operator == "/") {
+          return divide(a, b);
         }
+      }
     </script>
-</body>
+  </body>
 </html>

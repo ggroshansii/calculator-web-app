@@ -1,0 +1,6 @@
+#main-container {
+    margin: 100px auto;
+    width: 350px;
+    height: 450px;
+    border: 2px solid red;
+}

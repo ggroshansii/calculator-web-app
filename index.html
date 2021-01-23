@@ -39,61 +39,67 @@
     </div>
 
     <script>
-        let a;
-        let b;
-        let operator;
+      let a;
+      let b;
+      let operator;
 
-        function add(a, b) {
-          return a + b;
+      function add(a, b) {
+        return a + b;
+      }
+
+      function subtract(a, b) {
+        return a - b;
+      }
+
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      function divide(a, b) {
+        return a / b;
+      }
+
+      function operate(operator, a, b) {
+        if (operator == "+") {
+          return add(a, b);
+        } else if (operator == "-") {
+          return subtract(a, b);
+        } else if (operator == "*") {
+          return multiply(a, b);
+        } else if (operator == "/") {
+          return divide(a, b);
         }
+      }
+      console.log(typeof a);
 
-        function subtract(a, b) {
-          return a - b;
-        }
-
-        function multiply(a, b) {
-          return a * b;
-        }
-
-        function divide(a, b) {
-          return a / b;
-        }
-
-        function operate(operator, a, b) {
-          if (operator == "+") {
-            return add(a, b);
-          } else if (operator == "-") {
-            return subtract(a, b);
-          } else if (operator == "*") {
-            return multiply(a, b);
-          } else if (operator == "/") {
-            return divide(a, b);
+      const numbers = Array.from(document.querySelectorAll(".number"));
+      const display = document.querySelector("#displayDiv");
+      for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener("click", function () {
+          if (typeof a == "undefined") {
+            display.textContent = numbers[i].textContent;
+            console.log(numbers[i]);
+            a = numbers[i].textContent;
+          } else {
+            display.textContent = numbers[i].textContent;
+            b = numbers[i].textContent;
           }
-        }
-        console.log(typeof a);
-
-        const numbers = Array.from(document.querySelectorAll(".number"));
-        const display = document.querySelector("#displayDiv");
-        for (let i = 0; i < numbers.length; i++){
-          numbers[i].addEventListener("click", function(){
-
-          if (typeof a == "undefined"){
-              display.textContent = numbers[i].textContent;
-              console.log(numbers[i]);
-              a = numbers[i].textContent;
-            } else {
-              display.textContent = numbers[i].textContent;
-              b = numbers[i].textContent;
-            }
         });
-        }
-        
-        const operators = Array.from(document.querySelectorAll(".operator"));
-        for (let i = 0; i < operators.length; i++){
-          operators[i].addEventListener("click", function(){
-            display.textContent = "";
-          })
-        }
+      }
+
+      const operators = Array.from(document.querySelectorAll(".operator"));
+      for (let i = 0; i < operators.length; i++) {
+        operators[i].addEventListener("click", function () {
+          display.textContent = "";
+          display.textContent = operators[i].textContent;
+          operator = operators[i].textContent;
+        });
+      }
+
+      const equals = document.querySelector("#equals");
+      equals.addEventListener("click", function(){
+        display.textContent = operate(operator, a, b);
+      });
 
 
     </script>

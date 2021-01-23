@@ -1,107 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Calculator Web App</title>
-  </head>
-  <body>
-    <div id="main-container">
-      <div id="displayDiv"></div>
-      <div id="grid-container">
-        <div class="button" id="clear">Clear</div>
-        <div class="button" id="posNeg">+/-</div>
-        <div class="button" id="percentage">%</div>
-        <div class="button operator" id="divide">/</div>
-        <div class="button number" id="seven">7</div>
-        <div class="button number" id="eight">8</div>
-        <div class="button number" id="nine">9</div>
-        <div class="button operator" id="multiply">*</div>
-        <div class="button number" id="four">4</div>
-        <div class="button number" id="five">5</div>
-        <div class="button number" id="six">6</div>
-        <div class="button operator" id="subtract">-</div>
-        <div class="button number" id="one">1</div>
-        <div class="button number" id="two">2</div>
-        <div class="button number" id="three">3</div>
-        <div class="button operator" id="addition">+</div>
-        <div class="button number" id="zero">0</div>
-        <div class="button" id="decimal">.</div>
-        <div class="button" id="equals">=</div>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Calculator Web App</title>
+</head>
+
+<body>
+  <div id="main-container">
+    <div id="displayDiv"></div>
+    <div id="grid-container">
+      <div class="button" id="clear">Clear</div>
+      <div class="button" id="posNeg">+/-</div>
+      <div class="button" id="percentage">%</div>
+      <div class="button operator" id="divide">/</div>
+      <div class="button number" id="seven">7</div>
+      <div class="button number" id="eight">8</div>
+      <div class="button number" id="nine">9</div>
+      <div class="button operator" id="multiply">*</div>
+      <div class="button number" id="four">4</div>
+      <div class="button number" id="five">5</div>
+      <div class="button number" id="six">6</div>
+      <div class="button operator" id="subtract">-</div>
+      <div class="button number" id="one">1</div>
+      <div class="button number" id="two">2</div>
+      <div class="button number" id="three">3</div>
+      <div class="button operator" id="addition">+</div>
+      <div class="button number" id="zero">0</div>
+      <div class="button" id="decimal">.</div>
+      <div class="button" id="equals">=</div>
     </div>
+  </div>
 
-    <script>
-      let a;
-      let b;
-      let operator;
+  <script>
+    let a;
+    let b;
+    let operator;
 
-      function add(a, b) {
-        return a + b;
+    function add(a, b) {
+      return parseInt(a) + parseInt(b);
+    }
+
+    function subtract(a, b) {
+      return parseInt(a) - parseInt(b);
+    }
+
+    function multiply(a, b) {
+      return parseInt(a) * parseInt(b);
+    }
+
+    function divide(a, b) {
+      return parseInt(a) / parseInt(b);
+    }
+
+    function operate(operator, a, b) {
+      if (operator == "+") {
+        return add(a, b);
+      } else if (operator == "-") {
+        return subtract(a, b);
+      } else if (operator == "*") {
+        return multiply(a, b);
+      } else if (operator == "/") {
+        return divide(a, b);
       }
+    }
 
-      function subtract(a, b) {
-        return a - b;
-      }
 
-      function multiply(a, b) {
-        return a * b;
-      }
-
-      function divide(a, b) {
-        return a / b;
-      }
-
-      function operate(operator, a, b) {
-        if (operator == "+") {
-          return add(a, b);
-        } else if (operator == "-") {
-          return subtract(a, b);
-        } else if (operator == "*") {
-          return multiply(a, b);
-        } else if (operator == "/") {
-          return divide(a, b);
+    const numbers = Array.from(document.querySelectorAll(".number"));
+    const display = document.querySelector("#displayDiv");
+    for (let i = 0; i < numbers.length; i++) {
+      numbers[i].addEventListener("click", function () {
+        if (typeof a == "undefined" && typeof operator == "undefined") {
+          display.textContent = numbers[i].textContent;
+          a = numbers[i].textContent;
+          console.log(typeof a);
+        } else if (typeof a == "string" && typeof operator == "undefined") {
+          display.textContent = a + numbers[i].textContent;
+          a = a + numbers[i].textContent;
+        } else if (typeof b == "undefined" && typeof operator == "string"){
+          display.textContent = numbers[i].textContent;
+          b = numbers[i].textContent;
+        } else {
+          display.textContent = b + numbers[i].textContent;
+          b = b + numbers[i].textContent;
         }
-      }
-      console.log(typeof a);
+      });
+    }
 
-      const numbers = Array.from(document.querySelectorAll(".number"));
-      const display = document.querySelector("#displayDiv");
-      for (let i = 0; i < numbers.length; i++) {
-        numbers[i].addEventListener("click", function () {
-          if (typeof a == "undefined") {
-            display.textContent = numbers[i].textContent;
-            console.log(numbers[i]);
-            a = numbers[i].textContent;
-          } else {
-            display.textContent = numbers[i].textContent;
-            b = numbers[i].textContent;
-          }
-        });
-      }
-
-      const operators = Array.from(document.querySelectorAll(".operator"));
-      for (let i = 0; i < operators.length; i++) {
-        operators[i].addEventListener("click", function () {
+    const operators = Array.from(document.querySelectorAll(".operator"));
+    for (let i = 0; i < operators.length; i++) {
+      operators[i].addEventListener("click", function () {
+        if (typeof operator == "undefined") {
           display.textContent = "";
           display.textContent = operators[i].textContent;
           operator = operators[i].textContent;
-        });
-      }
-
-      const equals = document.querySelector("#equals");
-      equals.addEventListener("click", function(){
-        display.textContent = operate(operator, a, b);
+        } else {
+          display.textContent = operate(operator, a, b);
+          a = operate(operator, a, b);
+          b = "";
+          operator = operators[i].textContent;
+          console.log(operators[i])
+        }
       });
+    }
 
+    const equals = document.querySelector("#equals");
+    equals.addEventListener("click", function () {
+      display.textContent = operate(operator, a, b);
+    });
+  </script>
+</body>
 
-    </script>
-  </body>
 </html>

@@ -19,19 +19,19 @@
         <div class="button" id="clear">Clear</div>
         <div class="button" id="posNeg">+/-</div>
         <div class="button" id="percentage">%</div>
-        <div class="button" id="divide">/</div>
+        <div class="button operator" id="divide">/</div>
         <div class="button number" id="seven">7</div>
         <div class="button number" id="eight">8</div>
         <div class="button number" id="nine">9</div>
-        <div class="button" id="multiply">*</div>
+        <div class="button operator" id="multiply">*</div>
         <div class="button number" id="four">4</div>
         <div class="button number" id="five">5</div>
         <div class="button number" id="six">6</div>
-        <div class="button" id="subtract">-</div>
+        <div class="button operator" id="subtract">-</div>
         <div class="button number" id="one">1</div>
         <div class="button number" id="two">2</div>
         <div class="button number" id="three">3</div>
-        <div class="button" id="addition">+</div>
+        <div class="button operator" id="addition">+</div>
         <div class="button number" id="zero">0</div>
         <div class="button" id="decimal">.</div>
         <div class="button" id="equals">=</div>
@@ -73,9 +73,10 @@
         console.log(typeof a);
 
         const numbers = Array.from(document.querySelectorAll(".number"));
+        const display = document.querySelector("#displayDiv");
         for (let i = 0; i < numbers.length; i++){
           numbers[i].addEventListener("click", function(){
-          const display = document.querySelector("#displayDiv");
+
           if (typeof a == "undefined"){
               display.textContent = numbers[i].textContent;
               console.log(numbers[i]);
@@ -86,6 +87,14 @@
             }
         });
         }
+        
+        const operators = Array.from(document.querySelectorAll(".operator"));
+        for (let i = 0; i < operators.length; i++){
+          operators[i].addEventListener("click", function(){
+            display.textContent = "";
+          })
+        }
+
 
     </script>
   </body>

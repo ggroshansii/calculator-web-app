@@ -58,6 +58,10 @@
       return parseFloat(a) / parseFloat(b);
     }
 
+    function percent(a){
+      return parseFloat(a) / 100;
+    }
+
     function operate(operator, a, b) {
       if (operator == "+") {
         return add(a, b);
@@ -153,6 +157,21 @@
         } else {
           display.textContent = "-" + b;
           b = "-" + b;
+        }
+    });
+
+    const percentage = document.querySelector("#percentage")
+    percentage.addEventListener("click", function(){
+      if (typeof a == "undefined" && typeof operator == "undefined") {
+
+        } else if (typeof a == "string" && typeof operator == "undefined") {
+          display.textContent = percent(a);
+          a = percent(a);
+        } else if (typeof b == "undefined" && typeof operator == "string"){
+
+        } else {
+          display.textContent = percent(b);
+          b = percent(b);
         }
     });
 

@@ -43,19 +43,19 @@
     let operator;
 
     function add(a, b) {
-      return parseInt(a) + parseInt(b);
+      return parseFloat(a) + parseFloat(b);
     }
 
     function subtract(a, b) {
-      return parseInt(a) - parseInt(b);
+      return parseFloat(a) - parseFloat(b);
     }
 
     function multiply(a, b) {
-      return parseInt(a) * parseInt(b);
+      return parseFloat(a) * parseFloat(b);
     }
 
     function divide(a, b) {
-      return parseInt(a) / parseInt(b);
+      return parseFloat(a) / parseFloat(b);
     }
 
     function operate(operator, a, b) {
@@ -78,7 +78,6 @@
         if (typeof a == "undefined" && typeof operator == "undefined") {
           display.textContent = numbers[i].textContent;
           a = numbers[i].textContent;
-          console.log(typeof a);
         } else if (typeof a == "string" && typeof operator == "undefined") {
           display.textContent = a + numbers[i].textContent;
           a = a + numbers[i].textContent;
@@ -120,6 +119,23 @@
       operator = undefined;
       a = undefined;
       b = undefined;
+    });
+
+    const decimal = document.querySelector("#decimal");
+    decimal.addEventListener("click", function(){
+      if (typeof a == "undefined" && typeof operator == "undefined") {
+          display.textContent = ".";
+          a = ".";
+        } else if (typeof a == "string" && typeof operator == "undefined") {
+          display.textContent = a + ".";
+          a = a + ".";
+        } else if (typeof b == "undefined" && typeof operator == "string"){
+          display.textContent = ".";
+          b = ".";
+        } else {
+          display.textContent = b + "."
+          b = b + ".";
+        }
     });
   </script>
 </body>

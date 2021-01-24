@@ -113,6 +113,14 @@
     equals.addEventListener("click", function () {
       display.textContent = operate(operator, a, b);
     });
+
+    const clear = document.querySelector("#clear");
+    clear.addEventListener('click', function() {
+      display.textContent = "";
+      operator = undefined;
+      a = undefined;
+      b = undefined;
+    });
   </script>
 </body>
 

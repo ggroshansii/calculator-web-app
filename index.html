@@ -46,25 +46,39 @@
       let operator;
 
       function add(a, b) {
-        return parseFloat(a) + parseFloat(b);
+        if (a.includes(".") || b.includes(".")){
+          return (parseFloat(a) + parseFloat(b)).toFixed(2);
+        } else {
+          return parseFloat(a) + parseFloat(b);
+        }
       }
 
       function subtract(a, b) {
-        return parseFloat(a) - parseFloat(b);
+        if (a.includes(".") || b.includes(".")){
+          return (parseFloat(a) - parseFloat(b)).toFixed(2);
+        } else {
+          return parseFloat(a) - parseFloat(b);
+        }
       }
 
       function multiply(a, b) {
-        return parseFloat(a) * parseFloat(b);
+        if (a.includes(".") || b.includes(".")){
+          return (parseFloat(a) * parseFloat(b)).toFixed(2);
+        } else {
+          return parseFloat(a) * parseFloat(b);
+        }
       }
 
       function divide(a, b) {
         if (b == 0){
           return "DON'T DIVIDE BY ZERO";
-        }else{
+        } else if (a.includes(".") || b.includes(".")){
+          return (parseFloat(a) / parseFloat(b)).toFixed(2);
+        } else {
           return parseFloat(a) / parseFloat(b);
         }
-
       }
+
 
       function percent(a) {
         return parseFloat(a) / 100;
@@ -237,8 +251,11 @@
           display.textContent = percent(a);
           a = percent(a);
         } else if (typeof b == "undefined" && typeof operator == "string") {
+          display.textContent = percent(display.textContent);
+          a = percent(display.textContent);
         } else {
           display.textContent = percent(display.textContent);
+          a = percent(display.textContent);
         }
       });
 

@@ -137,6 +137,25 @@
           b = b + ".";
         }
     });
+
+
+    const posNeg = document.querySelector("#posNeg");
+    posNeg.addEventListener("click", function() {
+      if (typeof a == "undefined" && typeof operator == "undefined") {
+          display.textContent = "-";
+          a = "-";
+        } else if (typeof a == "string" && typeof operator == "undefined") {
+          display.textContent = "-" + a;
+          a = "-" + a;
+        } else if (typeof b == "undefined" && typeof operator == "string"){
+          display.textContent = "-";
+          b = "-";
+        } else {
+          display.textContent = "-" + b;
+          b = "-" + b;
+        }
+    });
+
   </script>
 </body>
 

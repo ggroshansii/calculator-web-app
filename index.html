@@ -58,7 +58,12 @@
       }
 
       function divide(a, b) {
-        return parseFloat(a) / parseFloat(b);
+        if (b == 0){
+          return "DON'T DIVIDE BY ZERO";
+        }else{
+          return parseFloat(a) / parseFloat(b);
+        }
+
       }
 
       function percent(a) {
@@ -171,16 +176,16 @@
 
       const decimal = document.querySelector("#decimal");
       decimal.addEventListener("click", function () {
-        if (typeof a == "undefined" && typeof operator == "undefined") {
+        if (typeof a == "undefined" && typeof operator == "undefined" && a.includes(".") == false) {
           display.textContent = ".";
           a = ".";
-        } else if (typeof a == "string" && typeof operator == "undefined") {
+        } else if (typeof a == "string" && typeof operator == "undefined" && a.includes(".") == false) {
           display.textContent = a + ".";
           a = a + ".";
-        } else if (typeof b == "undefined" && typeof operator == "string") {
+        } else if (typeof b == "undefined" && typeof operator == "string" && b.includes(".") == false) {
           display.textContent = ".";
           b = ".";
-        } else {
+        } else if (b.includes(".") == false) {
           display.textContent = b + ".";
           b = b + ".";
         }

@@ -11,13 +11,13 @@
 }
 
 .color3{
- background-color: #53a8b1;
+ background-color: #37818a;
 }
 
 #main-container {
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(156, 183, 224);
+    background-color: rgb(71, 108, 163);
     margin: 100px auto;
     padding: 10px 0px;
     width: 350px;
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid rgb(173, 173, 173);
     background-color:rgb(245, 245, 245);
     text-align: right;
     font-size: 30px;
@@ -50,11 +50,12 @@
 }
 
 .button{
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items:  center;
+    color: white;
     width: 65px;
     height: 55px;
     margin: auto;

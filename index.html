@@ -233,8 +233,7 @@
           a = percent(a);
         } else if (typeof b == "undefined" && typeof operator == "string") {
         } else {
-          display.textContent = percent(b);
-          b = percent(b);
+          display.textContent = percent(display.textContent);
         }
       });
 
